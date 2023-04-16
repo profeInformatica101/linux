@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Permisos de archivos en Linux</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="my-4">Permisos de archivos en Linux</h1>
+        <p>En Linux, los usuarios, grupos y permisos de archivos están interrelacionados para controlar el acceso y las acciones que se pueden realizar en archivos y directorios del sistema.</p>
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Usuarios</h2>
+                <p>Los usuarios son entidades que interactúan con el sistema operativo. Cada usuario tiene un nombre de usuario único y una contraseña asociada. Los usuarios pueden tener diferentes niveles de privilegios en función de sus roles y responsabilidades.</p>
+            </div>
+            <div class="col-md-4">
+                <h2>Grupos</h2>
+                <p>Los grupos son colecciones de usuarios que comparten ciertos permisos y accesos. Permiten a los administradores del sistema asignar permisos y privilegios a múltiples usuarios a la vez, facilitando la administración de permisos.</p>
+            </div>
+            <div class="col-md-4">
+                <h2>Permisos de archivos</h2>
+                <p>Los permisos de archivos en Linux definen qué acciones (leer, escribir, ejecutar) pueden realizar los usuarios y grupos en archivos y directorios específicos. Los permisos de archivos están estrechamente relacionados con usuarios y grupos para controlar el acceso a los recursos del sistema.</p>
+            </div>
+        </div>
+        <h2 class="my-4">Permisos de lectura (r), escritura (w) y ejecución (x) para usuarios propietario (u), grupo (g) y otros (o)</h2>
+        <p>Los permisos de archivos en Linux se dividen en tres categorías: lectura (r), escritura (w) y ejecución (x). Estos permisos se aplican de manera diferente a tres tipos de usuarios: propietario (u), grupo (g) y otros (o).</p>
+        <ul>
+            <li><strong>Propietario (u):</strong> Es el usuario que creó el archivo o directorio. Por lo general, tiene los permisos más amplios para realizar acciones en el archivo o directorio.</li>
+            <li><strong>Grupo (g):</strong> Es el conjunto de usuarios que pertenecen al mismo grupo que el propietario. Los miembros del grupo pueden tener permisos similares o más limitados que el propietario, según lo establecido por el administrador del sistema.</li>
+            <li><strong>Otros (o):</strong> Son todos los demás usuarios que no son el propietario ni miembros del grupo asociado al archivo o directorio. Los permisos para "otros" suelen ser más restrictivos para garantizar la seguridad y la privacidad de los archivos y directorios.</li>
+        </ul>
+        <p>La combinación de estos permisos y tipos de usuarios permite un control granular del acceso a archivos y directorios en el sistema Linux.</p
+            <h1 class="my-4">Permisos en Linux y cómo cambiarlos</h1>
+    <p>Esta tabla muestra los diferentes permisos en Linux y cómo cambiarlos usando el comando <code>chmod</code>.</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Permiso</th>
+                <th>Número</th>
+                <th>Simbólico</th>
+                <th>Comando</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Lectura (Read)</td>
+                <td>4</td>
+                <td>r</td>
+                <td>chmod u+r, g+r, o+r archivo</td>
+            </tr>
+            <tr>
+                <td>Escritura (Write)</td>
+                <td>2</td>
+                <td>w</td>
+                <td>chmod u+w, g+w, o+w archivo</td>
+            </tr>
+            <tr>
+                <td>Ejecución (Execute)</td>
+                <td>1</td>
+                <td>x</td>
+                <td>chmod u+x, g+x, o+x archivo</td>
+            </tr>
+            <tr>
+                <td>Quitar lectura</td>
+                <td>-</td>
+                <td>-r</td>
+                <td>chmod u-r, g-r, o-r archivo</td>
+            </tr>
+            <tr>
+                <td>Quitar escritura</td>
+                <td>-</td>
+                <td>-w</td>
+                <td>chmod u-w, g-w, o-w archivo</td>
+            </tr>
+            <tr>
+                <td>Quitar ejecución</td>
+                <td>-</td>
+                <td>-x</td>
+                <td>chmod u-x, g-x, o-x archivo</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>En resumen, los usuarios y grupos en Linux son utilizados para asignar y gestionar los permisos de archivos, garantizando que solo las personas y aplicaciones autorizadas tengan acceso a los recursos y puedan realizar acciones específicas en el sistema.</p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
