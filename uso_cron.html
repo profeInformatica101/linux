@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Ejemplo de script para usar con Cron</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Ejemplo de script para usar con Cron</h1>
+        <p>Para ejecutar un script con Cron, sigue los siguientes pasos:</p>
+        <ol>
+            <li>Crea el archivo del script que deseas ejecutar. Por ejemplo, <code>script.sh</code>.</li>
+            <li>Dale permisos de ejecución al archivo del script. Puedes hacer esto con el siguiente comando: <code>chmod +x script.sh</code>.</li>
+            <li>Abre el archivo <code>/etc/crontab</code> en tu editor de texto favorito y agrega la línea que ejecutará el script. Por ejemplo, si deseas ejecutar el script cada día a las 2 a.m., agrega la siguiente línea: <code>0 2 * * * /path/to/script.sh</code>. Recuerda reemplazar <code>/path/to/</code> con la ruta real del archivo.</li>
+            <li>Guarda el archivo <code>/etc/crontab</code> y ciérralo.</li>
+        </ol>
+        <p>Una vez que hayas configurado Cron para ejecutar el script, asegúrate de que el script haga lo que necesitas. Aquí hay un ejemplo de un script que hace una copia de seguridad de un directorio:</p>
+        <div class="card">
+            <div class="card-header">
+                <h2 class="h5 mb-0">Ejemplo de script de copia de seguridad</h2>
+            </div>
+            <div class="card-body">
+                <p>Este script realiza una copia de seguridad de un directorio y lo comprime en un archivo tar.</p>
+                <pre><code>#!/bin/bash
+# Directorio que se desea respaldar
+DIR="/path/to/backup"
+Nombre del archivo de respaldo
+FILE="backup_$(date +%Y%m%d).tar.gz"
+
+Comprimir el directorio
+tar -czf $FILE $DIR</code></pre>
+<p>Para utilizar este script con Cron, asegúrate de darle permisos de ejecución como se describe en el paso 2 anterior y configura Cron para que lo ejecute según sea necesario como se describe en los pasos 3 y 4.</p>
+</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>
