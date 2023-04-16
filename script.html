@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Scripts de Linux</title>
+</head>
+<body>
+    
+  <div class="container my-4">
+    <h1 class="my-4">Scripts en Linux</h1>
+        <p>Un script en Linux es un archivo de texto plano que contiene comandos de shell. Los scripts pueden automatizar tareas repetitivas, realizar backups, gestionar permisos de archivos, entre otras tareas.</p>
+        <h2 class="my-4">Cómo crear un script</h2>
+        <ol>
+            <li>Crea un archivo de texto plano con la extensión <code>.sh</code>. Por ejemplo, <code>miscript.sh</code>.</li>
+            <li>Agrega los comandos de shell que quieres ejecutar en el archivo.</li>
+            <li>Asigna permisos de ejecución al archivo con el comando <code>chmod +x miscript.sh</code>.</li>
+            <li>Ejecuta el script con el comando <code>./miscript.sh</code>.</li>
+        </ol>
+        <p>¡Listo! Ahora ya tienes un script funcional en Linux.</p>
+    <h1 class="mb-4">Ejemplos Scripts de Linux</h1>
+
+    <!-- Script 1 -->
+    <div class="accordion" id="script1">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="heading1">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
+            Script 1: Nombre de usuario y fecha actual
+          </button>
+        </h2>
+        <div id="collapse1" class="accordion-collapse collapse" aria-labelledby="heading1" data-bs-parent="#script1">
+          <div class="accordion-body">
+            <p>Mostrar en pantalla el nombre de usuario actual y la fecha y hora actual.</p>
+            <p><strong>Solución:</strong></p>
+            <pre><code>#!/bin/bash
+echo "Usuario actual: $(whoami)"
+echo "Fecha y hora actual: $(date)"</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Script 2 -->
+    <div class="accordion" id="script2">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="heading2">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+            Script 2: Listar archivos y directorios
+          </button>
+        </h2>
+        <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#script2">
+          <div class="accordion-body">
+            <p>Mostrar en pantalla una lista de archivos y directorios en el directorio actual.</p>
+            <p><strong>Solución:</strong></p>
+            <pre>
+                <code>#!/bin/bash
+                ls -a</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- Script 3 -->
+<div class="accordion" id="script3">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="heading3">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+          Script 3: Contar número de archivos y directorios
+        </button>
+      </h2>
+      <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3" data-bs-parent="#script3">
+        <div class="accordion-body">
+          <p>Contar el número de archivos y directorios en el directorio actual y mostrarlo en pantalla.</p>
+          <p><strong>Solución:</strong></p>
+          <pre><code>#!/bin/bash
+        echo "Número de archivos: $(ls -1 | wc -l)"
+        echo "Número de directorios: $(ls -l | grep -c ^d)"</code></pre>
+            </div>
+            </div>
+            </div>
+            </div>
+<!-- Script 4 -->
+<div class="accordion" id="script4">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="heading4">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+          Script 4: Crear directorios
+        </button>
+      </h2>
+      <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4" data-bs-parent="#script4">
+        <div class="accordion-body">
+          <p>Crear tres directorios con nombres 'uno', 'dos' y 'tres' en el directorio actual.</p>
+          <p><strong>Solución:</strong></p>
+          <pre><code>#!/bin/bash
+             mkdir uno dos tres</code></pre>
+        </div>
+        </div>
+        </div>
+        </div>
+        <!-- Script 5 -->
+<div class="accordion" id="script5">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="heading5">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+        Script 5: Copiar archivos
+      </button>
+    </h2>
+    <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="heading5" data-bs-parent="#script5">
+      <div class="accordion-body">
+        <p>Copiar todos los archivos con extensión .txt en el directorio actual al directorio /tmp.</p>
+        <p><strong>Solución:</strong></p>
+        <pre><code>#!/bin/bash
+            cp *.txt /tmp</code></pre>
+</div>
+</div>
+</div>
+</div>
+        <!-- Script 6 -->
+<div class="accordion" id="script6">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="heading6">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+          Script 6: Saludar al usuario
+        </button>
+      </h2>
+      <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="heading6" data-bs-parent="#script6">
+        <div class="accordion-body">
+          <p>Este script recibe como parámetro el nombre del usuario y muestra un mensaje de bienvenida.</p>
+          <p><strong>Solución:</strong></p>
+          <pre><code>#!/bin/bash
+              echo "Bienvenido, $1!"</code></pre>
+          <p>Para utilizar este script, guarda el código anterior en un archivo con extensión .sh, por ejemplo, "saludar.sh". Luego, asigna permisos de ejecución al archivo con el comando <code>chmod +x saludar.sh</code>. Para ejecutar el script, escribe en la terminal <code>./saludar.sh nombre_de_usuario</code>, reemplazando "nombre_de_usuario" por el nombre del usuario al que quieres saludar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
