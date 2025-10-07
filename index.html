@@ -1,11 +1,800 @@
-<!DOCTYPE html>
-<html>
+
+<!doctype html>
+<html lang="es" data-bs-theme="light">
 <head>
-  <title>Linux</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ubuntu CLI Cheat Sheet 2025 — Acordeones con Imágenes y Bash</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body { padding: 2rem; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; color: red;}
+    .cmd { background: #f8f9fa; border-radius: .5rem; padding: .5rem .75rem; display: inline-block; margin:.1rem 0; }
+    .subtle { color:#6c757d; }
+    .tux-img { width: 88px; height: auto; border-radius: 12px; }
+    .hero { display:flex; gap:1rem; align-items:center; }
+    .hero .title-wrap { flex:1; }
+    .figure-img { max-width:100%; height:auto; border-radius: .75rem; }
+    .foot-note { font-size: .9rem; }
+    .credit { font-size: .85rem; color:#6c757d; }
+    /* Small screen tweaks */
+    @media (max-width: 576px) {
+      .hero { flex-direction: column; align-items: flex-start; }
+      .tux-img { width: 72px; }
+    }
+  </style>
 </head>
 <body>
-  <h1>Linux</h1>
-  <a href="jerarquia_sistema.html">Ver jerarquía del sistema</a>
-  <a href="https://linuxsimply.com/wp-content/uploads/2023/05/Bash-scripting-Cheat-Sheet-by-linuxsimply.pdf">Chuleta comandos</a>
+  <header class="mb-4 hero">
+    <img class="tux-img" src="https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg" alt="Tux, la mascota de Linux">
+    <div class="title-wrap">
+      <h1 class="h3 mb-1"><i class="bi bi-terminal-fill me-2"></i>Ubuntu CLI Cheat Sheet 2025</h1>
+      <p class="subtle mb-0">Resumen operativo en acordeones de Bootstrap, con iconos e imágenes.</p>
+    </div>
+  </header>
+
+  <div class="accordion" id="cheatsheet">
+
+    <!-- Sistema -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="heading-system">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-system" aria-expanded="true" aria-controls="collapse-system">
+          <i class="bi bi-cpu me-2"></i>Sistema
+        </button>
+      </h2>
+      <div id="collapse-system" class="accordion-collapse collapse show" aria-labelledby="heading-system" data-bs-parent="#cheatsheet">
+        <div class="accordion-body">
+          <div class="accordion" id="system-sub">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="sys-info-h">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sys-info" aria-expanded="false" aria-controls="sys-info">
+                  <i class="bi bi-info-circle me-2"></i>Información del sistema
+                </button>
+              </h2>
+              <div id="sys-info" class="accordion-collapse collapse" aria-labelledby="sys-info-h" data-bs-parent="#system-sub">
+                <div class="accordion-body">
+                  <div class="cmd"><code>uname -a</code></div> — Muestra toda la información del sistema.<br>
+                  <div class="cmd"><code>hostnamectl</code></div> — Muestra el nombre del host y detalles relacionados.<br>
+                  <div class="cmd"><code>lscpu</code></div> — Lista la información de la arquitectura de la CPU.<br>
+                  <div class="cmd"><code>timedatectl status</code></div> — Muestra la hora del sistema.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="sys-mon-h">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sys-mon" aria-expanded="false" aria-controls="sys-mon">
+                  <i class="bi bi-activity me-2"></i>Monitorización y gestión
+                </button>
+              </h2>
+              <div id="sys-mon" class="accordion-collapse collapse" aria-labelledby="sys-mon-h" data-bs-parent="#system-sub">
+                <div class="accordion-body">
+                  <div class="cmd"><code>top</code></div> — Procesos en tiempo real.<br>
+                  <div class="cmd"><code>htop</code></div> — Visor interactivo (requiere instalación).<br>
+                  <div class="cmd"><code>df -h</code></div> — Uso de disco en formato legible.<br>
+                  <div class="cmd"><code>free -m</code></div> — Memoria libre y usada (MB).<br>
+                  <div class="cmd"><code>kill &lt;process id&gt;</code></div> — Termina un proceso.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="sys-run-h">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sys-run" aria-expanded="false" aria-controls="sys-run">
+                  <i class="bi bi-play-circle me-2"></i>Ejecución de comandos
+                </button>
+              </h2>
+              <div id="sys-run" class="accordion-collapse collapse" aria-labelledby="sys-run-h" data-bs-parent="#system-sub">
+                <div class="accordion-body">
+                  <div class="cmd"><code>&lt;comando&gt; &amp;</code></div> — Ejecuta en segundo plano.<br>
+                  <div class="cmd"><code>jobs</code></div> — Muestra comandos en background.<br>
+                  <div class="cmd"><code>fg &lt;número&gt;</code></div> — Trae al primer plano.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="sys-svc-h">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sys-svc" aria-expanded="false" aria-controls="sys-svc">
+                  <i class="bi bi-gear-wide-connected me-2"></i>Gestión de servicios (systemd)
+                </button>
+              </h2>
+              <div id="sys-svc" class="accordion-collapse collapse" aria-labelledby="sys-svc-h" data-bs-parent="#system-sub">
+                <div class="accordion-body">
+                  <div class="cmd"><code>sudo systemctl start &lt;service&gt;</code></div> — Inicia un servicio.<br>
+                  <div class="cmd"><code>sudo systemctl stop &lt;service&gt;</code></div> — Detiene un servicio.<br>
+                  <div class="cmd"><code>sudo systemctl status &lt;service&gt;</code></div> — Estado de un servicio.<br>
+                  <div class="cmd"><code>sudo systemctl reload &lt;service&gt;</code></div> — Recarga la configuración sin interrumpir.<br>
+                  <div class="cmd"><code>journalctl -f</code></div> — Sigue el journal en tiempo real.<br>
+                  <div class="cmd"><code>journalctl -u &lt;unit_name&gt;</code></div> — Logs de una unidad concreta.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="sys-cron-h">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sys-cron" aria-expanded="false" aria-controls="sys-cron">
+                  <i class="bi bi-alarm me-2"></i>Crontab y planificación
+                </button>
+              </h2>
+              <div id="sys-cron" class="accordion-collapse collapse" aria-labelledby="sys-cron-h" data-bs-parent="#system-sub">
+                <div class="accordion-body">
+                  <div class="cmd"><code>crontab -e</code></div> — Edita los cron jobs del usuario.<br>
+                  <div class="cmd"><code>crontab -l</code></div> — Lista los cron jobs del usuario.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Archivos -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="heading-files">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-files" aria-expanded="false" aria-controls="collapse-files">
+          <i class="bi bi-hdd-stack me-2"></i>Archivos y directorios
+        </button>
+      </h2>
+      <div id="collapse-files" class="accordion-collapse collapse" aria-labelledby="heading-files" data-bs-parent="#cheatsheet">
+        <div class="accordion-body">
+          <div class="accordion" id="files-sub">
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="files-mgmt-h">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#files-mgmt" aria-expanded="false" aria-controls="files-mgmt">
+                  <i class="bi bi-folder2-open me-2"></i>Gestión de archivos
+                </button>
+              </h2>
+              <div id="files-mgmt" class="accordion-collapse collapse" aria-labelledby="files-mgmt-h" data-bs-parent="#files-sub">
+                <div class="accordion-body">
+                  <div class="cmd"><code>ls</code></div> — Lista archivos y directorios.<br>
+                  <div class="cmd"><code>touch &lt;archivo&gt;</code></div> — Crea o actualiza un archivo.<br>
+                  <div class="cmd"><code>cp &lt;origen&gt; &lt;destino&gt;</code></div> — Copia archivos.<br>
+                  <div class="cmd"><code>mv &lt;origen&gt; &lt;destino&gt;</code></div> — Mueve o renombra.<br>
+                  <div class="cmd"><code>rm &lt;archivo&gt;</code></div> — Elimina un archivo.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="files-nav-h">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#files-nav" aria-expanded="false" aria-controls="files-nav">
+                  <i class="bi bi-compass me-2"></i>Navegación de directorios
+                </button>
+              </h2>
+              <div id="files-nav" class="accordion-collapse collapse" aria-labelledby="files-nav-h" data-bs-parent="#files-sub">
+                <div class="accordion-body">
+                  <div class="cmd"><code>pwd</code></div> — Ruta del directorio actual.<br>
+                  <div class="cmd"><code>cd &lt;directorio&gt;</code></div> — Cambia de directorio.<br>
+                  <div class="cmd"><code>mkdir &lt;nombre&gt;</code></div> — Crea un directorio.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="files-perm-h">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#files-perm" aria-expanded="false" aria-controls="files-perm">
+                  <i class="bi bi-key me-2"></i>Permisos y propiedad
+                </button>
+              </h2>
+              <div id="files-perm" class="accordion-collapse collapse" aria-labelledby="files-perm-h" data-bs-parent="#files-sub">
+                <div class="accordion-body">
+                  <div class="cmd"><code>chmod [quién][+/-][permisos] &lt;archivo&gt;</code></div> — Cambia permisos.<br>
+                  <div class="cmd"><code>chmod u+x &lt;archivo&gt;</code></div> — Hace ejecutable para el dueño.<br>
+                  <div class="cmd"><code>chown [usuario]:[grupo] &lt;archivo&gt;</code></div> — Cambia propietario y grupo.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="files-search-h">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#files-search" aria-expanded="false" aria-controls="files-search">
+                  <i class="bi bi-search me-2"></i>Búsqueda
+                </button>
+              </h2>
+              <div id="files-search" class="accordion-collapse collapse" aria-labelledby="files-search-h" data-bs-parent="#files-sub">
+                <div class="accordion-body">
+                  <div class="cmd"><code>find [directorio] -name &lt;patrón&gt;</code></div> — Busca archivos y directorios.<br>
+                  <div class="cmd"><code>grep &lt;patrón&gt; &lt;archivo&gt;</code></div> — Busca un patrón en archivos.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="files-arch-h">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#files-arch" aria-expanded="false" aria-controls="files-arch">
+                  <i class="bi bi-file-zip me-2"></i>Archivado y compresión
+                </button>
+              </h2>
+              <div id="files-arch" class="accordion-collapse collapse" aria-labelledby="files-arch-h" data-bs-parent="#files-sub">
+                <div class="accordion-body">
+                  <div class="cmd"><code>tar -czvf &lt;nombre.tar.gz&gt; [archivos]</code></div> — Comprime en tar.gz.<br>
+                  <div class="cmd"><code>tar -xvf &lt;nombre.tar.[gz|bz|xz]&gt; [destino]</code></div> — Extrae un tar comprimido.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="files-text-h">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#files-text" aria-expanded="false" aria-controls="files-text">
+                  <i class="bi bi-file-earmark-text me-2"></i>Edición y procesamiento de texto
+                </button>
+              </h2>
+              <div id="files-text" class="accordion-collapse collapse" aria-labelledby="files-text-h" data-bs-parent="#files-sub">
+                <div class="accordion-body">
+                  <div class="cmd"><code>nano &lt;archivo&gt;</code></div> — Editor Nano.<br>
+                  <div class="cmd"><code>cat &lt;archivo&gt;</code></div> — Muestra contenido.<br>
+                  <div class="cmd"><code>less &lt;archivo&gt;</code></div> — Paginado.<br>
+                  <div class="cmd"><code>head &lt;archivo&gt;</code></div> — Primeras líneas.<br>
+                  <div class="cmd"><code>tail &lt;archivo&gt;</code></div> — Últimas líneas.<br>
+                  <div class="cmd"><code>awk '{print}' &lt;archivo&gt;</code></div> — Imprime cada línea.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paquetes -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="heading-packages">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-packages" aria-expanded="false" aria-controls="collapse-packages">
+          <i class="bi bi-box-seam me-2"></i>Paquetes (APT y Snap)
+        </button>
+      </h2>
+      <div id="collapse-packages" class="accordion-collapse collapse" aria-labelledby="heading-packages" data-bs-parent="#cheatsheet">
+        <div class="accordion-body">
+          <div class="accordion" id="pkg-sub">
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="apt-h">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#apt" aria-expanded="false" aria-controls="apt">
+                  <i class="bi bi-boxes me-2"></i>Gestión de paquetes (APT)
+                </button>
+              </h2>
+              <div id="apt" class="accordion-collapse collapse" aria-labelledby="apt-h" data-bs-parent="#pkg-sub">
+                <div class="accordion-body">
+                  <div class="cmd"><code>sudo apt install &lt;paquete&gt;</code></div> — Instala un paquete.<br>
+                  <div class="cmd"><code>sudo apt install -f --reinstall &lt;paquete&gt;</code></div> — Reinstala paquete roto.<br>
+                  <div class="cmd"><code>apt search &lt;paquete&gt;</code></div> — Busca paquetes APT.<br>
+                  <div class="cmd"><code>apt-cache policy &lt;paquete&gt;</code></div> — Versiones disponibles.<br>
+                  <div class="cmd"><code>sudo apt update</code></div> — Actualiza índices.<br>
+                  <div class="cmd"><code>sudo apt upgrade</code></div> — Actualiza paquetes.<br>
+                  <div class="cmd"><code>sudo apt remove &lt;paquete&gt;</code></div> — Elimina un paquete.<br>
+                  <div class="cmd"><code>sudo apt purge &lt;paquete&gt;</code></div> — Elimina paquete y configuración.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="snap-h">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#snap" aria-expanded="false" aria-controls="snap">
+                  <i class="bi bi-app-indicator me-2"></i>Gestión de paquetes (Snap)
+                </button>
+              </h2>
+              <div id="snap" class="accordion-collapse collapse" aria-labelledby="snap-h" data-bs-parent="#pkg-sub">
+                <div class="accordion-body">
+                  <div class="cmd"><code>snap find &lt;paquete&gt;</code></div> — Busca paquetes Snap.<br>
+                  <div class="cmd"><code>sudo snap install &lt;nombre&gt;</code></div> — Instala un Snap.<br>
+                  <div class="cmd"><code>sudo snap remove &lt;nombre&gt;</code></div> — Elimina un Snap.<br>
+                  <div class="cmd"><code>sudo snap refresh</code></div> — Actualiza Snaps instalados.<br>
+                  <div class="cmd"><code>snap list</code></div> — Lista Snaps instalados.<br>
+                  <div class="cmd"><code>snap info &lt;nombre&gt;</code></div> — Información de un Snap.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Usuarios y grupos -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="heading-users">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-users" aria-expanded="false" aria-controls="collapse-users">
+          <i class="bi bi-people-fill me-2"></i>Usuarios y grupos
+        </button>
+      </h2>
+      <div id="collapse-users" class="accordion-collapse collapse" aria-labelledby="heading-users" data-bs-parent="#cheatsheet">
+        <div class="accordion-body">
+          <div class="accordion" id="users-sub">
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="users-mgmt-h">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#users-mgmt" aria-expanded="false" aria-controls="users-mgmt">
+                  <i class="bi bi-person-gear me-2"></i>Gestión de usuarios
+                </button>
+              </h2>
+              <div id="users-mgmt" class="accordion-collapse collapse" aria-labelledby="users-mgmt-h" data-bs-parent="#users-sub">
+                <div class="accordion-body">
+                  <div class="cmd"><code>w</code></div> — Usuarios conectados.<br>
+                  <div class="cmd"><code>sudo adduser &lt;usuario&gt;</code></div> — Crea usuario.<br>
+                  <div class="cmd"><code>sudo deluser &lt;usuario&gt;</code></div> — Elimina usuario.<br>
+                  <div class="cmd"><code>sudo passwd &lt;usuario&gt;</code></div> — Establece/cambia contraseña.<br>
+                  <div class="cmd"><code>su &lt;usuario&gt;</code></div> — Cambia de usuario.<br>
+                  <div class="cmd"><code>sudo passwd -l &lt;usuario&gt;</code></div> — Bloquea cuenta.<br>
+                  <div class="cmd"><code>sudo passwd -u &lt;usuario&gt;</code></div> — Desbloquea contraseña.<br>
+                  <div class="cmd"><code>sudo chage &lt;usuario&gt;</code></div> — Configura expiración de contraseña.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="groups-mgmt-h">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#groups-mgmt" aria-expanded="false" aria-controls="groups-mgmt">
+                  <i class="bi bi-people me-2"></i>Gestión de grupos
+                </button>
+              </h2>
+              <div id="groups-mgmt" class="accordion-collapse collapse" aria-labelledby="groups-mgmt-h" data-bs-parent="#users-sub">
+                <div class="accordion-body">
+                  <div class="cmd"><code>id [usuario]</code></div> — IDs de usuario y grupo.<br>
+                  <div class="cmd"><code>groups [usuario]</code></div> — Grupos del usuario.<br>
+                  <div class="cmd"><code>sudo addgroup &lt;grupo&gt;</code></div> — Crea grupo.<br>
+                  <div class="cmd"><code>sudo delgroup &lt;grupo&gt;</code></div> — Elimina grupo.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Redes -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="heading-net">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-net" aria-expanded="false" aria-controls="collapse-net">
+          <i class="bi bi-wifi me-2"></i>Redes
+        </button>
+      </h2>
+      <div id="collapse-net" class="accordion-collapse collapse" aria-labelledby="heading-net" data-bs-parent="#cheatsheet">
+        <div class="accordion-body">
+          <div class="accordion" id="net-sub">
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="net-basic-h">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#net-basic" aria-expanded="false" aria-controls="net-basic">
+                  <i class="bi bi-hdd-network me-2"></i>Comandos básicos de red
+                </button>
+              </h2>
+              <div id="net-basic" class="accordion-collapse collapse" aria-labelledby="net-basic-h" data-bs-parent="#net-sub">
+                <div class="accordion-body">
+                  <div class="cmd"><code>ip addr show</code></div> — Interfaces e IPs.<br>
+                  <div class="cmd"><code>ip -s link</code></div> — Estadísticas de red.<br>
+                  <div class="cmd"><code>ss -l</code></div> — Sockets en escucha.<br>
+                  <div class="cmd"><code>ping &lt;host&gt;</code></div> — Hacer ping a un host.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="net-netplan-h">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#net-netplan" aria-expanded="false" aria-controls="net-netplan">
+                  <i class="bi bi-diagram-3 me-2"></i>Netplan (configuración)
+                </button>
+              </h2>
+              <div id="net-netplan" class="accordion-collapse collapse" aria-labelledby="net-netplan-h" data-bs-parent="#net-sub">
+                <div class="accordion-body">
+                  <div class="cmd"><code>cat /etc/netplan/*.yaml</code></div> — Ver configuración actual.<br>
+                  <div class="cmd"><code>sudo netplan try</code></div> — Probar configuración temporalmente.<br>
+                  <div class="cmd"><code>sudo netplan apply</code></div> — Aplicar configuración.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="net-firewall-h">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#net-firewall" aria-expanded="false" aria-controls="net-firewall">
+                  <i class="bi bi-shield-lock me-2"></i>Firewall (UFW)
+                </button>
+              </h2>
+              <div id="net-firewall" class="accordion-collapse collapse" aria-labelledby="net-firewall-h" data-bs-parent="#net-sub">
+                <div class="accordion-body">
+                  <div class="cmd"><code>sudo ufw status</code></div> — Estado del firewall.<br>
+                  <div class="cmd"><code>sudo ufw enable</code></div> — Activar UFW.<br>
+                  <div class="cmd"><code>sudo ufw disable</code></div> — Desactivar UFW.<br>
+                  <div class="cmd"><code>sudo ufw allow &lt;puerto/servicio&gt;</code></div> — Permitir tráfico.<br>
+                  <div class="cmd"><code>sudo ufw deny &lt;puerto/servicio&gt;</code></div> — Denegar tráfico.<br>
+                  <div class="cmd"><code>sudo ufw delete allow|deny &lt;puerto/servicio&gt;</code></div> — Borrar regla.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="net-ssh-h">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#net-ssh" aria-expanded="false" aria-controls="net-ssh">
+                  <i class="bi bi-box-arrow-in-right me-2"></i>SSH y acceso remoto
+                </button>
+              </h2>
+              <div id="net-ssh" class="accordion-collapse collapse" aria-labelledby="net-ssh-h" data-bs-parent="#net-sub">
+                <div class="accordion-body">
+                  <div class="cmd"><code>ssh &lt;usuario@host&gt;</code></div> — Conexión SSH.<br>
+                  <div class="cmd"><code>scp &lt;origen&gt; &lt;usuario@host&gt;:&lt;destino&gt;</code></div> — Copia segura entre hosts.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LXD -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="heading-lxd">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-lxd" aria-expanded="false" aria-controls="collapse-lxd">
+          <i class="bi bi-box2-heart me-2"></i>LXD (contenedores y VMs)
+        </button>
+      </h2>
+      <div id="collapse-lxd" class="accordion-collapse collapse" aria-labelledby="heading-lxd" data-bs-parent="#cheatsheet">
+        <div class="accordion-body">
+          <p class="subtle">LXD ofrece una experiencia unificada para ejecutar y gestionar contenedores o máquinas virtuales.</p>
+          <div class="accordion" id="lxd-sub">
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="lxd-init-h">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#lxd-init" aria-expanded="false" aria-controls="lxd-init">
+                  <i class="bi bi-rocket-takeoff me-2"></i>Inicialización
+                </button>
+              </h2>
+              <div id="lxd-init" class="accordion-collapse collapse" aria-labelledby="lxd-init-h" data-bs-parent="#lxd-sub">
+                <div class="accordion-body">
+                  <div class="cmd"><code>lxd init</code></div> — Inicializa LXD antes del primer uso.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="lxd-create-h">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#lxd-create" aria-expanded="false" aria-controls="lxd-create">
+                  <i class="bi bi-plus-square-dotted me-2"></i>Creación de instancias
+                </button>
+              </h2>
+              <div id="lxd-create" class="accordion-collapse collapse" aria-labelledby="lxd-create-h" data-bs-parent="#lxd-sub">
+                <div class="accordion-body">
+                  <div class="cmd"><code>lxc init ubuntu:24.04 &lt;nombre&gt;</code></div> — Crea contenedor (no lo inicia).<br>
+                  <div class="cmd"><code>lxc launch ubuntu:24.04 &lt;nombre&gt;</code></div> — Crea e inicia contenedor.<br>
+                  <div class="cmd"><code>lxc launch ubuntu:24.04 &lt;nombre-vm&gt; --vm</code></div> — Crea e inicia VM.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="lxd-manage-h">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#lxd-manage" aria-expanded="false" aria-controls="lxd-manage">
+                  <i class="bi bi-sliders me-2"></i>Gestión de instancias
+                </button>
+              </h2>
+              <div id="lxd-manage" class="accordion-collapse collapse" aria-labelledby="lxd-manage-h" data-bs-parent="#lxd-sub">
+                <div class="accordion-body">
+                  <div class="cmd"><code>lxc list</code></div> — Lista instancias.<br>
+                  <div class="cmd"><code>lxc info &lt;instancia&gt;</code></div> — Información de estado.<br>
+                  <div class="cmd"><code>lxc start &lt;instancia&gt;</code></div> — Inicia.<br>
+                  <div class="cmd"><code>lxc stop &lt;instancia&gt; [--force]</code></div> — Detiene.<br>
+                  <div class="cmd"><code>lxc delete &lt;instancia&gt; [--force|--interactive]</code></div> — Elimina.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="lxd-access-h">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#lxd-access" aria-expanded="false" aria-controls="lxd-access">
+                  <i class="bi bi-door-open me-2"></i>Acceso a instancias
+                </button>
+              </h2>
+              <div id="lxd-access" class="accordion-collapse collapse" aria-labelledby="lxd-access-h" data-bs-parent="#lxd-sub">
+                <div class="accordion-body">
+                  <div class="cmd"><code>lxc exec &lt;instancia&gt; -- &lt;comando&gt;</code></div> — Ejecuta dentro de la instancia.<br>
+                  <div class="cmd"><code>lxc exec &lt;instancia&gt; -- bash</code></div> — Shell interactiva (si hay bash).<br>
+                  <div class="cmd"><code>lxc console &lt;instancia&gt; [flags]</code></div> — Consola de la instancia.<br>
+                  <div class="cmd"><code>lxc file pull &lt;instancia&gt;/&lt;ruta_instancia&gt; &lt;ruta_local&gt;</code></div> — Trae archivo.<br>
+                  <div class="cmd"><code>lxc file push &lt;ruta_local&gt; &lt;instancia&gt;/&lt;ruta_instancia&gt;</code></div> — Sube archivo.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="lxd-projects-h">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#lxd-projects" aria-expanded="false" aria-controls="lxd-projects">
+                  <i class="bi bi-collection me-2"></i>Proyectos
+                </button>
+              </h2>
+              <div id="lxd-projects" class="accordion-collapse collapse" aria-labelledby="lxd-projects-h" data-bs-parent="#lxd-sub">
+                <div class="accordion-body">
+                  <div class="cmd"><code>lxc project create &lt;proyecto&gt; [--config &lt;opción&gt;]</code></div> — Crea proyecto.<br>
+                  <div class="cmd"><code>lxc project set &lt;proyecto&gt; &lt;opción&gt;</code></div> — Configura proyecto.<br>
+                  <div class="cmd"><code>lxc project switch &lt;proyecto&gt;</code></div> — Cambia al proyecto.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ubuntu Pro -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="heading-pro">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-pro" aria-expanded="false" aria-controls="collapse-pro">
+          <i class="bi bi-shield-check me-2"></i>Ubuntu Pro
+        </button>
+      </h2>
+      <div id="collapse-pro" class="accordion-collapse collapse" aria-labelledby="heading-pro" data-bs-parent="#cheatsheet">
+        <div class="accordion-body">
+          <p class="subtle">Ubuntu Pro amplía el soporte LTS hasta 12 años y añade herramientas de gestión y cumplimiento.</p>
+          <div class="accordion" id="pro-sub">
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="pro-activate-h">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pro-activate" aria-expanded="false" aria-controls="pro-activate">
+                  <i class="bi bi-key-fill me-2"></i>Activación
+                </button>
+              </h2>
+              <div id="pro-activate" class="accordion-collapse collapse" aria-labelledby="pro-activate-h" data-bs-parent="#pro-sub">
+                <div class="accordion-body">
+                  <div class="cmd"><code>sudo pro attach &lt;token&gt;</code></div> — Vincula la máquina usando el token de suscripción.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="pro-manage-h">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pro-manage" aria-expanded="false" aria-controls="pro-manage">
+                  <i class="bi bi-toggles2 me-2"></i>Gestión de servicios
+                </button>
+              </h2>
+              <div id="pro-manage" class="accordion-collapse collapse" aria-labelledby="pro-manage-h" data-bs-parent="#pro-sub">
+                <div class="accordion-body">
+                  <div class="cmd"><code>sudo pro status</code></div> — Estado de servicios Pro.<br>
+                  <div class="cmd"><code>sudo pro enable &lt;servicio&gt;</code></div> — Activa un servicio (ESM, FIPS, Livepatch, ...).<br>
+                  <div class="cmd"><code>sudo pro disable &lt;servicio&gt;</code></div> — Desactiva un servicio.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="pro-esm-h">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pro-esm" aria-expanded="false" aria-controls="pro-esm">
+                  <i class="bi bi-calendar-check me-2"></i>ESM (Extended Security Maintenance)
+                </button>
+              </h2>
+              <div id="pro-esm" class="accordion-collapse collapse" aria-labelledby="pro-esm-h" data-bs-parent="#pro-sub">
+                <div class="accordion-body">
+                  <div class="cmd"><code>sudo pro enable esm-infra</code></div> — Seguridad extendida para infra.<br>
+                  <div class="cmd"><code>sudo pro enable esm-apps</code></div> — Seguridad extendida para apps.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="pro-livepatch-h">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pro-livepatch" aria-expanded="false" aria-controls="pro-livepatch">
+                  <i class="bi bi-activity me-2"></i>Livepatch
+                </button>
+              </h2>
+              <div id="pro-livepatch" class="accordion-collapse collapse" aria-labelledby="pro-livepatch-h" data-bs-parent="#pro-sub">
+                <div class="accordion-body">
+                  <div class="cmd"><code>sudo pro enable livepatch</code></div> — Aplica parches críticos de kernel sin reiniciar.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="pro-fips-h">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pro-fips" aria-expanded="false" aria-controls="pro-fips">
+                  <i class="bi bi-shield-lock-fill me-2"></i>FIPS
+                </button>
+              </h2>
+              <div id="pro-fips" class="accordion-collapse collapse" aria-labelledby="pro-fips-h" data-bs-parent="#pro-sub">
+                <div class="accordion-body">
+                  <div class="cmd"><code>sudo pro enable fips</code></div> — Activa modo FIPS con estándares criptográficos estrictos.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="pro-other-h">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pro-other" aria-expanded="false" aria-controls="pro-other">
+                  <i class="bi bi-arrow-repeat me-2"></i>Otros
+                </button>
+              </h2>
+              <div id="pro-other" class="accordion-collapse collapse" aria-labelledby="pro-other-h" data-bs-parent="#pro-sub">
+                <div class="accordion-body">
+                  <div class="cmd"><code>sudo pro refresh</code></div> — Refresca el estado de Ubuntu Pro.<br>
+                  <div class="cmd"><code>sudo pro detach</code></div> — Desvincula la máquina (deshabilita servicios).
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bash Scripting -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="heading-bash">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-bash" aria-expanded="false" aria-controls="collapse-bash">
+          <i class="bi bi-code-square me-2"></i>Bash Scripting
+        </button>
+      </h2>
+      <div id="collapse-bash" class="accordion-collapse collapse" aria-labelledby="heading-bash" data-bs-parent="#cheatsheet">
+        <div class="accordion-body">
+          <div class="accordion" id="bash-sub">
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="bash-syntax-h">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bash-syntax" aria-expanded="false" aria-controls="bash-syntax">
+                  <i class="bi bi-braces-asterisk me-2"></i>Sintaxis básica
+                </button>
+              </h2>
+              <div id="bash-syntax" class="accordion-collapse collapse" aria-labelledby="bash-syntax-h" data-bs-parent="#bash-sub">
+                <div class="accordion-body">
+                  <div class="cmd"><code>#!/bin/bash</code></div> — Shebang para indicar el intérprete.<br>
+                  <div class="cmd"><code>#!/usr/bin/env bash</code></div> — Shebang alternativo usando <code>env</code>.<br>
+                  <div class="cmd"><code># comentario</code></div> — Comentario de una línea.<br>
+                  <div class="cmd"><code>: &lt;&lt;'EOF' ... EOF</code></div> — Comentario multilínea (truco con here-doc).<br>
+                  <div class="cmd"><code>exit</code></div> — Termina el script con el código actual.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="bash-vars-h">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bash-vars" aria-expanded="false" aria-controls="bash-vars">
+                  <i class="bi bi-123 me-2"></i>Variables y especiales
+                </button>
+              </h2>
+              <div id="bash-vars" class="accordion-collapse collapse" aria-labelledby="bash-vars-h" data-bs-parent="#bash-sub">
+                <div class="accordion-body">
+                  <div class="cmd"><code>var=valor</code></div> — Asigna variable (sin espacios).<br>
+                  <div class="cmd"><code>$var</code></div> — Expande el valor de la variable.<br>
+                  <div class="cmd"><code>readonly var=valor</code></div> — Variable de solo lectura.<br>
+                  <div class="cmd"><code>var=$(comando)</code></div> — Sustitución de comandos.<br>
+                  <div class="cmd"><code>`comando`</code></div> — Versión antigua de sustitución.<br>
+                  <div class="cmd"><code>$0</code></div> — Nombre del script; <code>$1</code>, <code>$2</code>... argumentos.<br>
+                  <div class="cmd"><code>$#</code></div> — Número de argumentos.<br>
+                  <div class="cmd"><code>$?</code></div> — Código de salida del último comando.<br>
+                  <div class="cmd"><code>$$</code></div> — PID del script; <code>$!</code> — PID del último proceso en bg.<br>
+                  <div class="cmd"><code>$HOME</code>, <code>$PATH</code>, <code>$USER</code></div> — Variables de entorno comunes.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="bash-io-h">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bash-io" aria-expanded="false" aria-controls="bash-io">
+                  <i class="bi bi-arrow-left-right me-2"></i>Entrada/Salida y redirecciones
+                </button>
+              </h2>
+              <div id="bash-io" class="accordion-collapse collapse" aria-labelledby="bash-io-h" data-bs-parent="#bash-sub">
+                <div class="accordion-body">
+                  <div class="cmd"><code>read -p "Texto: " var</code></div> — Pide entrada al usuario.<br>
+                  <div class="cmd"><code>cmd &lt; input.txt</code></div> — Redirige entrada desde archivo.<br>
+                  <div class="cmd"><code>cmd &gt; out.txt</code></div> — Redirige salida (sobrescribe).<br>
+                  <div class="cmd"><code>cmd &gt;&gt; out.txt</code></div> — Redirige salida (añade).<br>
+                  <div class="cmd"><code>cmd 2&gt; err.txt</code></div> — Redirige errores.<br>
+                  <div class="cmd"><code>cmd &amp;&gt; all.txt</code></div> — Junta stdout+stderr.<br>
+                  <div class="cmd"><code>cmd1 | cmd2</code></div> — Pipe: salida de uno, entrada de otro.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="bash-cond-h">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bash-cond" aria-expanded="false" aria-controls="bash-cond">
+                  <i class="bi bi-diagram-3 me-2"></i>Condicionales
+                </button>
+              </h2>
+              <div id="bash-cond" class="accordion-collapse collapse" aria-labelledby="bash-cond-h" data-bs-parent="#bash-sub">
+                <div class="accordion-body">
+                  <div class="cmd"><code>if [ condición ]; then ... fi</code></div> — If básico.<br>
+                  <div class="cmd"><code>if ...; then ...; else ...; fi</code></div> — If/else.<br>
+                  <div class="cmd"><code>if ...; then ...; elif ...; else ...; fi</code></div> — If/elif/else.<br>
+                  <div class="cmd"><code>case var in patrón) ... ;; *) ... ;; esac</code></div> — Condiciones por patrones.<br>
+                  <div class="cmd"><code>test condición</code></div> — Devuelve 0/1 según condición.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="bash-loops-h">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bash-loops" aria-expanded="false" aria-controls="bash-loops">
+                  <i class="bi bi-arrow-repeat me-2"></i>Bucles
+                </button>
+              </h2>
+              <div id="bash-loops" class="accordion-collapse collapse" aria-labelledby="bash-loops-h" data-bs-parent="#bash-sub">
+                <div class="accordion-body">
+                  <div class="cmd"><code>for x in lista; do ...; done</code></div> — Itera una lista.<br>
+                  <div class="cmd"><code>while condición; do ...; done</code></div> — Mientras se cumpla.<br>
+                  <div class="cmd"><code>until condición; do ...; done</code></div> — Hasta que se cumpla.<br>
+                  <div class="cmd"><code>select op in lista; do ...; done</code></div> — Menú simple.<br>
+                  <div class="cmd"><code>break</code></div> — Rompe el bucle; <code>continue</code> — Salta a la siguiente iteración.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="bash-arr-fn-h">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bash-arr-fn" aria-expanded="false" aria-controls="bash-arr-fn">
+                  <i class="bi bi-diagram-2 me-2"></i>Arrays y funciones
+                </button>
+              </h2>
+              <div id="bash-arr-fn" class="accordion-collapse collapse" aria-labelledby="bash-arr-fn-h" data-bs-parent="#bash-sub">
+                <div class="accordion-body">
+                  <div class="cmd"><code>declare -a arr=(a b c)</code></div> — Array indexado; <code>${arr[0]}</code> primer elemento.<br>
+                  <div class="cmd"><code>declare -A map; map[clave]=valor</code></div> — Array asociativo.<br>
+                  <div class="cmd"><code>function f() { local x=1; echo $x; }</code></div> — Función con variable local.<br>
+                  <div class="cmd"><code>return n</code></div> — Devuelve código de salida de función.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="bash-ops-h">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bash-ops" aria-expanded="false" aria-controls="bash-ops">
+                  <i class="bi bi-calculator me-2"></i>Operadores
+                </button>
+              </h2>
+              <div id="bash-ops" class="accordion-collapse collapse" aria-labelledby="bash-ops-h" data-bs-parent="#bash-sub">
+                <div class="accordion-body">
+                  <div class="cmd"><code>(( a + b ))</code>, <code>(( a - b ))</code>, <code>(( a * b ))</code>, <code>(( a / b ))</code>, <code>(( a % b ))</code>, <code>(( a ** b ))</code></div> — Aritmética.<br>
+                  <div class="cmd"><code>((i++))</code> / <code>((i--))</code></div> — Incremento / decremento.<br>
+                  <div class="cmd"><code>-lt</code>, <code>-gt</code>, <code>-le</code>, <code>-ge</code>, <code>-eq</code>, <code>-ne</code></div> — Comparadores numéricos.<br>
+                  <div class="cmd"><code>[[ -n str ]]</code> — Cadena no vacía; <code>[[ -z str ]]</code> — Cadena vacía.<br>
+                  <div class="cmd"><code>&amp;&amp;</code>, <code>||</code>, <code>!</code></div> — AND, OR, NOT lógicos.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="bash-str-h">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bash-str" aria-expanded="false" aria-controls="bash-str">
+                  <i class="bi bi-type me-2"></i>Manipulación de cadenas
+                </button>
+              </h2>
+              <div id="bash-str" class="accordion-collapse collapse" aria-labelledby="bash-str-h" data-bs-parent="#bash-sub">
+                <div class="accordion-body">
+                  <div class="cmd"><code>echo "${a} ${b}"</code></div> — Concatenación simple.<br>
+                  <div class="cmd"><code>${str:n}</code></div> — Subcadena desde índice <code>n</code> hasta el final.<br>
+                  <div class="cmd"><code>${str:0:5}</code></div> — Subcadena (pos 0, longitud 5).<br>
+                  <div class="cmd"><code>${#str}</code></div> — Longitud de la cadena.<br>
+                  <div class="cmd"><code>[[ $str == *"World"* ]]</code></div> — Coincidencia por patrón.<br>
+                  <div class="cmd"><code>${str/World/Universe}</code></div> — Sustituye primera ocurrencia.<br>
+                  <div class="cmd"><code>${str#\ *}</code></div> — Quita prefijo; <code>${str%%*( )}</code> — Quita sufijos de espacios (extglob).
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <section class="mt-5">
+    <h2 class="h5 mb-3"><i class="bi bi-diagram-3 me-2"></i>Mapa conceptual del software libre</h2>
+    <figure class="text-center">
+      <img class="figure-img img-fluid shadow-sm" src="https://upload.wikimedia.org/wikipedia/commons/d/d2/Mapa_conceptual_software_libre.png" alt="Mapa conceptual del software libre">
+      <figcaption class="credit mt-2">Fuente: Wikimedia Commons. Se muestra para fines educativos.</figcaption>
+    </figure>
+  </section>
+
+  <footer class="mt-4 credit">
+    <i class="bi bi-filetype-pdf me-1"></i> Basado en tus PDFs "ubuntu_cli_cheat_sheet_2025.pdf" y "Bash-scripting-Cheat-Sheet-by-linuxsimply.pdf".
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
